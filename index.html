@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tutorial on REMU at ISCA 2024</title>
   <style>
+     button:hover {
+        cursor: pointer;
+        text-decoration: underline; /* 悬停时添加下划线 */
+    }
+    
     body {
       font-family: Arial, sans-serif;
       margin: 0;
@@ -112,6 +117,7 @@
       z-index: 999;
     }
     .registration-box {
+      cursor: pointer;
       display: none;
       position: fixed;
       top: 50%;
@@ -198,7 +204,7 @@
           <p>Feiyu Chen and Congrong Ye are pursuing their master's degree in ICT, CAS. They focus on REMU optimizations aiming to integrate more sophisticated system-level components and provide a more user-friendly debugging interface, respectively.</p>
         </div>
         <h2 id="overview">Overview</h2>
-        <p>We're running a <strong>hands-on half-day tutorial</strong> on REMU at <a href="https://iscaconf.org/isca2024/" style="color: #007bff; text-decoration: underline;">ISCA 2024</a>!</p>
+        <p>We're running a <strong>hands-on half-day tutorial</strong> on REMU at <a href="form.html" style="color: #007bff; text-decoration: underline;">ISCA 2024</a>!</p>
         <p>Tired of getting bogged down by the snail-paced logical simulation during system-level debugging and performance evaluation? </p>
         <p>Say goodbye to the grind with our solution, REMU!</p>
         <p>With its remarkable capability to rapidly <strong>emulate 23 billion cycles in just 79 seconds</strong>, along with offering <strong>fully bit-accurate and cycle-accurate visibility</strong>, REMU provides a better balance  in efficiency and precision.</p>
@@ -240,8 +246,8 @@
         <div class="registration-overlay" id="registration-overlay"></div>
         <div class="registration-box" id="registration-box">
           <span class="close-button" onclick="closeRegistrationBox()">&times;</span>
-          <div class="registration-header">Please input your registration information.</div>
-          <form id="registration-form" onsubmit="submitForm(event)">
+          <div class="registration-header">Please input your registration information.</div> <!-- 添加弹窗顶部文字 -->
+          <form id="registration-form" onsubmit="saveFormData(event)">
             <label for="firstname">First Name:</label>
             <input type="text" id="firstname" name="firstname" required><br>
             <label for="lastname">Last Name:</label>
@@ -279,8 +285,8 @@
     document.getElementById("registration-box").style.display = "none";
   }
 
-  function submitForm(event) {
-    event.preventDefault();
+  function saveFormData(event) {
+    event.preventDefault(); // 阻止表单默认提交行为
 
     var formData = {
       firstname: document.getElementById("firstname").value,
@@ -288,7 +294,7 @@
       email: document.getElementById("email").value
     };
 
-    fetch('https://remu.agileserve.org.cn:30187', {
+    fetch('/submit-form', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -298,10 +304,12 @@
     .then(response => {
       if (response.ok) {
         console.log('Form data submitted successfully!');
-        closeRegistrationBox();
-        document.getElementById("firstname").value = "";
+        closeRegistrationBox(); // 提交成功后关闭弹窗
+        document.getElementById("firstname").value = ""; // 清空输入框内容
         document.getElementById("lastname").value = "";
         document.getElementById("email").value = "";
+
+        // 弹出提交成功提示
         alert('Submit success!');
       } else {
         console.error('Form data submission failed!');
