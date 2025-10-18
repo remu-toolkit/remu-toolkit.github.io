@@ -272,7 +272,7 @@ to support scalable system debugging on multi-FPGA.</p>
         <div class="registration-overlay" id="registration-overlay"></div>
         <div class="registration-box" id="registration-box">
           <span class="close-button" onclick="closeRegistrationBox()">&times;</span>
-          <div class="registration-header">Please input your registration information.</div> <!-- 添加弹窗顶部文字 -->
+          <div class="registration-header">Please input your registration information.</div>
           <form id="registration-form" onsubmit="saveFormData(event)">
             <label for="firstname">First Name:</label>
             <input type="text" id="firstname" name="firstname" required><br>
@@ -306,8 +306,9 @@ to support scalable system debugging on multi-FPGA.</p>
   }
 
   function displayRegistrationBox() {
-    document.getElementById("registration-overlay").style.display = "block";
-    document.getElementById("registration-box").style.display = "block";
+    // document.getElementById("registration-overlay").style.display = "block";
+    // document.getElementById("registration-box").style.display = "block";
+    window.location.href="https://docs.google.com/forms/d/e/1FAIpQLSdolF3BohlyX351e_wmScwj3yLQtUFR2lLbaEQvpokBNtZ1Hg/viewform?usp=header";
   }
 
   function closeRegistrationBox() {
