@@ -269,7 +269,7 @@ to support scalable system debugging on multi-FPGA.</p>
         <p>Either academic scholarship or industrial experts who are interested in the micro-architecture of processor chips, system architecture design, HW-SW co-design, etc., are welcome to participate in our tutorial. </p>
         <h2 id="registration">Registration</h2>
         <p>To attend the tutorial, you need register for our <button onclick="displayRegistrationBox()" style="color: #007bff; text-decoration: underline; border: none; background: none; font-size: 18px;">cloud plaform</button> in advance, so we can provide sufficient FPGA resources for attendees.</p>
-        <div class="registration-overlay" id="registration-overlay"></div>
+        <!-- <div class="registration-overlay" id="registration-overlay"></div>
         <div class="registration-box" id="registration-box">
           <span class="close-button" onclick="closeRegistrationBox()">&times;</span>
           <div class="registration-header">Please input your registration information.</div>
@@ -282,7 +282,7 @@ to support scalable system debugging on multi-FPGA.</p>
             <input type="email" id="email" name="email" required><br><br>
             <button type="submit">Submit</button>
           </form>
-        </div>
+        </div> -->
         <h2 id="contact">Contact us</h2>
         <p>For any further question, please contact <a href="mailto:huguanghui@ict.ac.cn">huguanghui@ict.ac.cn</a> or <a href="mailto:liushiqi@ict.ac.cn">liushiqi@ict.ac.cn</a>.</p>
         <h2 id="Screen Recording">Screen Recording</h2>
@@ -311,45 +311,45 @@ to support scalable system debugging on multi-FPGA.</p>
     window.location.href="https://docs.google.com/forms/d/e/1FAIpQLSdolF3BohlyX351e_wmScwj3yLQtUFR2lLbaEQvpokBNtZ1Hg/viewform?usp=header";
   }
 
-  function closeRegistrationBox() {
-    document.getElementById("registration-overlay").style.display = "none";
-    document.getElementById("registration-box").style.display = "none";
-  }
+  // function closeRegistrationBox() {
+  //   document.getElementById("registration-overlay").style.display = "none";
+  //   document.getElementById("registration-box").style.display = "none";
+  // }
 
-  function saveFormData(event) {
-    event.preventDefault(); // 阻止表单默认提交行为
+  // function saveFormData(event) {
+  //   event.preventDefault(); // 阻止表单默认提交行为
 
-    var formData = {
-      firstname: document.getElementById("firstname").value,
-      lastname: document.getElementById("lastname").value,
-      email: document.getElementById("email").value
-    };
+  //   var formData = {
+  //     firstname: document.getElementById("firstname").value,
+  //     lastname: document.getElementById("lastname").value,
+  //     email: document.getElementById("email").value
+  //   };
 
-    fetch('https://remu.agileserve.org.cn:30187', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData),
-    })
-    .then(response => {
-      if (response.ok) {
-        console.log('Form data submitted successfully!');
-        closeRegistrationBox(); // 提交成功后关闭弹窗
-        document.getElementById("firstname").value = ""; // 清空输入框内容
-        document.getElementById("lastname").value = "";
-        document.getElementById("email").value = "";
+  //   fetch('https://remu.agileserve.org.cn:30187', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //     body: JSON.stringify(formData),
+  //   })
+  //   .then(response => {
+  //     if (response.ok) {
+  //       console.log('Form data submitted successfully!');
+  //       closeRegistrationBox(); // 提交成功后关闭弹窗
+  //       document.getElementById("firstname").value = ""; // 清空输入框内容
+  //       document.getElementById("lastname").value = "";
+  //       document.getElementById("email").value = "";
 
-        // 弹出提交成功提示
-        alert('Submit success!');
-      } else {
-        console.error('Form data submission failed!');
-      }
-    })
-    .catch(error => {
-      console.error('Error:', error);
-    });
-  }
+  //       // 弹出提交成功提示
+  //       alert('Submit success!');
+  //     } else {
+  //       console.error('Form data submission failed!');
+  //     }
+  //   })
+  //   .catch(error => {
+  //     console.error('Error:', error);
+  //   });
+  // }
 
 </script>
 
